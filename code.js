@@ -1,5 +1,4 @@
 const input = document.querySelector('input');
-const addBtn = document.getElementById("addButton")
 const button = document.querySelector('button');
 const list = document.querySelector("ul");
 const completedTask = document.getElementById("taskCounter");
@@ -7,7 +6,6 @@ const message = document.getElementById("empty-input-message");
 
 let completedNum = 0;
 let tasks = [];
-
 
 
 function addTask() {
@@ -54,8 +52,10 @@ input.value = ""
 
 //Adding counter for completed tasks
 function counter(){
- completedNum = list.querySelectorAll(".complete").length   
- completedTask.innerText = (`${completedNum} completed`)
+ completedNum = tasks.length
+
+completedNum = list.querySelectorAll(".complete").length;
+completedTask.innerText = `${completedNum} completed`;
 }
 
 //Create delete button
@@ -70,8 +70,8 @@ deleteImg.id = "deleteBtnImage"
 //Remove task on button "click"
 deleteBtn.addEventListener("click", () => {
     taskElement.remove();
-    tasks.splice(index, 1)
-
+    tasks.splice(index, 1);
+    counter();
 });
 
 taskElement.appendChild(deleteBtn);
@@ -88,7 +88,3 @@ counter();}
 
 //Create list when "Add to list" is clicked. 
 button.addEventListener("click", addTask)
-
-
-
-
